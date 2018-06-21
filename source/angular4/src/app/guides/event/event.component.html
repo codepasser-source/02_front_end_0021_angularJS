@@ -1,0 +1,72 @@
+<div class="guides-event-container">
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> Event</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Click event <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        <p>
+          <button (click)="onBtnClickHandler()">Click Event</button>
+          <button on-click="onBtnClickHandler()">On Click Event</button>
+        </p>
+      </pre>
+
+      <hr/>
+
+      <h4 class="card-title">Input event <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        <p>
+          <label>{{currentHero.name}}</label>
+          <input [value]="currentHero.name" (input)="currentHero.name=$event.target.value" >
+        </p>
+      </pre>
+
+      <hr/>
+
+      <h4 class="card-title">EventEmitter event <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        防止事件冒泡
+        方法1 (click)="$event.stopPropagation(); onTargetHandler($event, 'target')
+        方法2 @Out 从重新覆盖click,显示调用event.stopPropagation();
+
+      </pre>
+      <h4 class="card-title">EventEmitter event <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        <code>方法1</code>
+        <div class="alert alert-success" (click)="$event.stopPropagation(); onTargetHandler($event, 'parent')">
+            <button (click)="$event.stopPropagation(); onTargetHandler($event, 'child')">Button</button>
+        </div>
+        <code>方法2</code>
+        <div class="alert alert-success" (click)="onTargetHandler($event, 'parent')">
+            <button (click)="onTargetHandler($event, 'child')">Button</button>
+        </div>
+      </pre>
+
+      <hr/>
+
+      <h4 class="card-title">自定义事件 <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        # 自定义事件是通过自定义指令实现
+        - Angular 允许开发者通过 @Output() 装饰器和 EventEmitter 自定义事件
+        - import {{'{'}} Directive, Output, EventEmitter, Renderer2, ElementRef {{'}'}} from '@angular/core';
+        - @Output("appStopPropagation")
+          stopPropagationEvent = new EventEmitter();
+      </pre>
+      <h4 class="card-title">自定义事件 <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        <code></code>
+        <div class="alert alert-success" (click)="onParentClickHandler()">
+          <button class="child" (click)="onChildClickHandler()">Click me</button>
+        </div>
+        <code></code>
+        <div class="alert alert-success" (click)="onParentClickHandler()">
+          <button class="child" (appStopPropagation)="onChildClickHandler()">Click me</button>
+        </div>
+      </pre>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,159 @@
+<div class="guides-router-container">
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> Router</h3>
+    </div>
+    <div class="card-body">
+
+      <h4 class="card-title">Router Module <span class="badge badge-info">Guide</span></h4>
+      <pre class="card-text">
+        - 引入routing的方式
+
+            # 创建应用时 指定引入routing组件
+            ng new angular4 --style scss --routing true
+
+        - 手动创建Routing步骤
+
+            # 0 在index.html head中添加 base节点
+
+                    <code>&lt;base href="/"&gt;</code>
+
+            # 1 创建 app/app.routing.module.ts
+
+                import {{ '{' }} NgModule {{ '}' }} from '@angular/core';
+                import {{ '{' }} Routes, RouterModule {{ '}' }} from '@angular/router'; // 依赖
+
+                const routes: Routes = [
+                  {{ '{' }}
+                    path: '',
+                    children: []
+                  {{ '}' }}
+                ];
+
+                @NgModule({{ '{' }}
+                  imports: [RouterModule.forRoot(routes)], // 根模块中使用 forRoot()，子模块中使用 forChild()
+                  exports: [RouterModule]
+                {{ '}' }})
+                export class AppRoutingModule {{ '{' }} {{ '}' }}
+
+            # 2 app/app.module.ts文件中引入 routing组件
+                ...
+                import {{ '{' }} AppRoutingModule {{ '}' }} from './app.routing.module'; //引入
+                @NgModule({{ '{' }}
+                  declarations: [
+                    AppComponent
+                  ],
+                  imports: [
+                    BrowserModule,
+                    AppRoutingModule // 引入
+                  ],
+                  providers: [],
+                  bootstrap: [AppComponent]
+                {{ '}' }})
+                export class AppModule {{ '{' }} {{ '}' }}
+
+            # 3 配置路由 app-routing.module.ts
+
+                import {{ '{' }} HomeComponent {{ '}' }} from './home/home.component';
+                import {{ '{' }} BashboardComponent {{ '}' }} from './bashboard/bashboard.component';
+                const routes: Routes = [
+                  {{ '{' }}
+                    path: '',
+                    component: HomeComponent
+                  {{ '}' }},
+                  {{ '{' }}
+                    path: 'bashboard',
+                    component: BashboardComponent
+                  {{ '}' }},
+                  {{ '{' }} path: '**', pathMatch: 'full', redirectTo: '' {{ '}' }}
+                ];
+
+            # pathMatch?: string; 默认为前缀匹配 "prefix"; "full" 为完全匹配
+            # outlet?: string; 路由目标
+            # children?: Routes; 子路由的规则
+      </pre>
+
+      <hr>
+
+      <h4 class="card-title">Router Child <span class="badge badge-info">Guide</span></h4>
+      <pre class="card-text">
+
+        - 命令
+
+            ng g m home --routing true
+                > installing module
+                  create src/app/home/home-routing.module.ts
+                  create src/app/home/home.module.ts
+                  WARNING Module is generated but not provided, it must be provided to be used
+            ng g c home
+                > installing component
+                  create src/app/home/home.component.scss
+                  create src/app/home/home.component.html
+                  create src/app/home/home.component.spec.ts
+                  create src/app/home/home.component.ts
+                  update src/app/home/home.module.ts
+
+        - app-routing 中配置 Routes, 引入 loadChildren Module
+
+            // home
+            {{ '{' }} path: 'home', loadChildren: 'app/home/home.module#HomeModule' {{ '}' }},
+            // default
+            {{ '{' }} path: '**', redirectTo: '', pathMatch: 'full' {{ '}' }}
+
+        - home-routing 中配置 Routes, 引入 HomeComponents
+
+            import {{ '{' }} HomeComponent {{ '}' }} from './home.component';
+            ...
+            {{ '{' }}
+                path: '', component: HomeComponent,
+                children: [
+                  {{ '{' }} path: 'dashboard', component: DashboardComponent {{ '}' }}
+                ]
+            {{ '}' }}
+
+        - app.component.html 中显示router link连接
+
+            &lt;a routerLink="/home" routerLinkActive="active"&gt;home&lt;/a&gt;
+
+      </pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> Router Location Strategy</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">LocationStrategy & HashLocationStrategy <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        # 方法一:
+        # 在AppRoutingModule中添加
+        imports: [RouterModule.forRoot(routes, {{'{'}} useHash: true {{'}'}})],
+
+        # 方法二:
+        # AppModule中引入HashLocationStrategy & LocationStrategy
+        import {{'{'}} HashLocationStrategy, LocationStrategy {{'}'}} from '@angular/common';
+        # provider中引入依赖
+        providers: [{{'{'}} provide: LocationStrategy, useClass: HashLocationStrategy {{'}'}}],
+      </pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> Router Params</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Router Params <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        {{'{'}} path: 'router/:id/:name', component: RouterComponent {{'}'}},
+      </pre>
+      <h4 class="card-title">Router Params <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        <button (click)="routerNavigator()">Router link param</button>
+      </pre>
+    </div>
+  </div>
+
+</div>

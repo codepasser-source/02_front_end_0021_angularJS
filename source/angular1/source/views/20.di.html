@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS DEMO</title>
+    <link rel="stylesheet" href="../../components/bootstrap/css/bootstrap.css">
+</head>
+
+<body>
+<h1>AngularJS DEMO : Dependency Injection，简称DI</h1>
+<hr>
+<hr>
+<h2>AngularJS 简单应用</h2>
+<div ng-app="mainApp" ng-controller="CalcController">
+    <p>输入一个数字: <input type="number" ng-model="number"/></p>
+    <button ng-click="square()">X<sup>2</sup></button>
+    <p>结果: {{result}}</p>
+</div>
+</body>
+<script src="../../components/angular/angular.min.js"></script>
+<script>
+    var mainApp = angular.module("mainApp", []);
+
+    /** 方式一 **/
+    mainApp.config(function ($provide) {
+        $provide.provider('MathService', function () {
+            this.$get = function () {
+                var factory = {};
+
+                factory.multiply = function (a, b) {
+                    console.log(1);
+                    return a * b;
+                }
+                return factory;
+            };
+        });
+    });
+
+    mainApp.constant("configParam", 1);
+    mainApp.value("defaultInput", 5);
+
+    /** 方式一 **/
+    mainApp.factory('MathService', function () {
+        var factory = {};
+
+        factory.multiply = function (a, b) {
+            console.log(2);
+            return a * b;
+        }
+        return factory;
+    });
+
+    mainApp.service('CalcService', function (MathService) {
+        this.square = function (a) {
+            return MathService.multiply(a, a);
+        }
+    });
+    mainApp.controller('CalcController', function ($scope, defaultInput, CalcService, MathService) {
+        $scope.number = defaultInput;
+        $scope.result = CalcService.square($scope.number);
+
+        $scope.square = function () {
+            $scope.result = CalcService.square($scope.number);
+            console.log(MathService);
+        }
+    });
+</script>
+</html>

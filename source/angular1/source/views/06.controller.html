@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS DEMO</title>
+</head>
+<body ng-app="myApp">
+
+<h1>AngularJS DEMO : Controller</h1>
+<hr>
+<h2>AngularJS 控制器</h2>
+AngularJS 应用程序被控制器控制。
+ng-controller 指令定义了应用程序控制器。
+控制器是 JavaScript 对象，由标准的 JavaScript 对象的构造函数 创建。
+
+<h2>控制器方法</h2>
+上面的实例演示了一个带有 lastName 和 firstName 这两个属性的控制器对象。
+控制器也可以有方法（变量和函数）：
+
+<h2>外部文件中的控制器</h2>
+在大型的应用程序中，通常是把控制器存储在外部文件中。
+<hr>
+<div ng-controller="myCtrl">
+    名: <input type="text" ng-model="firstName"><br>
+    姓: <input type="text" ng-model="lastName"><br>
+    <br>
+    姓名: {{fullName()}}
+</div>
+</body>
+<script src="../../components/angular/angular.min.js"></script>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope) {
+        $scope.firstName = "John";
+        $scope.lastName = "Doe";
+        $scope.fullName = function () {
+            return $scope.firstName + " " + $scope.lastName;
+        }
+    });
+</script>
+</html>

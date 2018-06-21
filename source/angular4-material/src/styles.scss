@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./assets/style/scss/_variables.scss";
+@import "./assets/style/scss/_common_layout.scss";
+@import "./assets/style/scss/_common_style.scss";
+
+/* Import material theme */
+// @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+// @import "~@angular/material/prebuilt-themes/purple-green.css";
+
+
+/* Import font-awesome */
+@import "./assets/library/font-awesome/4.7.0/css/font-awesome.css";

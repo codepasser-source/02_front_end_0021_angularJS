@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS DEMO</title>
+    <link rel="stylesheet" href="../../components/bootstrap/css/bootstrap.css">
+    <style>
+        div {
+            background-color: lightblue;
+            height: 100px;
+            width: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .ng-hide {
+            height: 0;
+            width: 0;
+            background-color: transparent;
+            top: -200px;
+            left: 200px;
+        }
+
+    </style>
+</head>
+
+<body ng-app="myApp">
+<h1>AngularJS DEMO : ng-animate</h1>
+<hr>
+<hr>
+
+<h1>隐藏 DIV: <input type="checkbox" ng-model="myCheck"></h1>
+
+<div ng-hide="myCheck"></div>
+
+</body>
+<script src="../../components/angular/angular.min.js"></script>
+<script src="../../components/angular/angular-animate.min.js"></script>
+<script>
+    var app = angular.module('myApp', ['ngAnimate']);
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS DEMO</title>
+</head>
+
+
+<body ng-app="myApp">
+<h1>AngularJS DEMO : API</h1>
+<hr>
+<h2>AngularJS 全局 API</h2>
+AngularJS 全局 API 用于执行常见任务的 JavaScript 函数集合，如：<br>
+比较对象<br>
+迭代对象<br>
+转换对象<br>
+angular.lowercase() 转换字符串为小写<br>
+angular.uppercase() 转换字符串为大写<br>
+angular.isString() 判断给定的对象是否为字符串，如果是返回 true。<br>
+angular.isNumber() 判断给定的对象是否为数字，如果是返回 true。<br>
+<hr>
+
+<div ng-controller="myCtrl">
+    <p>{{ x1 }}</p>
+    <p>{{ x2 }}</p>
+</div>
+
+</body>
+<script src="../../components/angular/angular.min.js"></script>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope) {
+        $scope.x1 = "JOHN";
+        $scope.x2 = angular.lowercase($scope.x1);
+        console.log(angular.isString($scope.x1));
+        console.log(angular.isNumber($scope.x2));
+    });
+</script>
+
+</html>

@@ -1,0 +1,50 @@
+<div class="guides-navigator-container">
+  <nav>
+    <div class="bd-toc-item">
+      <h4>
+        <a class="bd-toc-link" routerLink="/guides" routerLinkActive="active">Guides</a>
+      </h4>
+      <ul class="nav flex-column">
+        <li>
+          <a routerLink="/guides/gs/tsc" routerLinkActive="active">TypeScript</a>
+        </li>
+        <li>
+          <a routerLink="/guides/gs/architecture" routerLinkActive="active">Architecture</a>
+        </li>
+        <li>
+          <a routerLink="/guides/gs/template" routerLinkActive="active">Template</a>
+        </li>
+        <li>
+          <a routerLink="/guides/gs/directive" routerLinkActive="active">Directive</a>
+        </li>
+        <li>
+          <a routerLink="/guides/gs/pipe" routerLinkActive="active">Pipe</a>
+        </li>
+        <li>
+          <a routerLink="/guides/gs/decorator" routerLinkActive="active">Decorator</a>
+        </li>
+        <li>
+          <a routerLink="/guides/gs/injection" routerLinkActive="active">Injection</a>
+        </li>
+        <li>
+          <a routerLink="/guides/gs/lifecycle" routerLinkActive="active">Lifecycle</a>
+        </li>
+        <li>
+          <a routerLink="/guides/gs/event" routerLinkActive="active">Event</a>
+        </li>
+        <li>
+          <a routerLink="/guides/gs/http" routerLinkActive="active">Http</a>
+        </li>
+        <li>
+          <a routerLink="/guides/gs/form" routerLinkActive="active">Form</a>
+        </li>
+        <li>
+          <a [routerLink]="['/guides/gs/router',1,'angular']" [queryParams]="{debug:true}" routerLinkActive="active">Router</a>
+        </li>
+        <li>
+          <a routerLink="/guides/gs/other" routerLinkActive="active">Other</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,38 @@
+@import "./_variables.scss";
+
+// Usage as a mixin
+.element {
+  @include clearfix;
+}
+
+html{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container{
+  width: 100%;
+  height: 100%;
+}
+
+.body-container{
+  padding-top: 50px;
+}
+//
+// .footer-container{
+//   position: fixed;
+//   bottom: 0px;
+//   height: 80px;
+//   vertical-align: middle;
+//   line-height: 80px;
+//   z-index: 1000;
+// }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS DEMO</title>
+
+    <style>
+        table, th, td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        /*table tr:nth-child(odd) {*/
+        /*background-color: #f1f1f1;*/
+        /*}*/
+
+        /*table tr:nth-child(even) {*/
+        /*background-color: #ffffff;*/
+        /*}*/
+    </style>
+</head>
+<body ng-app="myApp">
+
+<h1>AngularJS DEMO : Table</h1>
+<hr>
+
+<hr>
+
+<div ng-controller="myCtrl">
+    <table>
+        <tr ng-repeat="x in names | orderBy : 'Country'">
+            <td ng-if="$odd" style="background-color:#ccc">{{ x.Name }}</td>
+            <td ng-if="$even">{{ x.Name }}</td>
+            <td ng-if="$odd" style="background-color:#ccc">{{ x.City }}</td>
+            <td ng-if="$even">{{ x.City }}</td>
+            <td ng-if="$odd" style="background-color:#ccc">{{ x.Country | uppercase}}</td>
+            <td ng-if="$even">{{ x.Country | uppercase}}</td>
+        </tr>
+    </table>
+</div>
+</body>
+<script src="../../components/angular/angular.min.js"></script>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope, $location, $http) {
+        console.log($location);
+        console.log($location.$$protocol + "://" + $location.$$host + "/angular/source/mock/data.json");
+        $http.get($location.$$protocol + "://" + $location.$$host + "/angular/source/mock/data.json")
+                .success(function (response) {
+                    $scope.names = response.records;
+                });
+    });
+</script>
+</html>

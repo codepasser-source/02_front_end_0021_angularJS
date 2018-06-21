@@ -1,0 +1,14 @@
+@import "./bootstrap-variables.scss";
+
+/* Base variables */
+
+// Background
+$background-dark : $gray-dark;
+$background-light : $teal;
+
+// <A>
+$link-color-default : $gray;
+$link-color-active : $purple;
+
+$link-color-light : $gray-light;
+$link-color-light-active : $gray-lightest;

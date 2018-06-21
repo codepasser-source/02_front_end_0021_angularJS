@@ -1,0 +1,98 @@
+<div class="guides-decorator-container">
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> Decorator</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Decorator装饰器 <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        装饰器是什么
+          它是一个表达式
+          该表达式被执行后，返回一个函数
+          函数的入参分别为 targe、name 和 descriptor
+          执行该函数后，可能返回 descriptor 对象，用于配置 target 对象　
+        装饰器的分类
+          - 类装饰器 (Class decorators)
+            @Component、@NgModule、@Pipe、@Injectable
+          - 属性装饰器 (Property decorators)
+            @Input、@Output、@ContentChild、@ContentChildren、@ViewChild、@ViewChildren
+          - 方法装饰器 (Method decorators)
+            @HostListener
+          - 参数装饰器 (Parameter decorators)
+            @Inject、@Optional、@Self、@SkipSelf、@Host
+      </pre>
+
+      <hr>
+
+      <h4 class="card-title">类装饰器 <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        import {{'{'}} NgModule, Component {{'}'}} from '@angular/core';
+
+        @Component({{'{'}}
+          selector: 'example-component',
+          template: '&lt;div&gt;Woo a component!&lt;/div&gt;'
+        {{'}'}})
+        export class ExampleComponent {{'{'}}
+          constructor() {{'{'}}
+            console.log('Hey I am a component!');
+          {{'}'}}
+        {{'}'}}
+      </pre>
+
+      <hr>
+
+      <h4 class="card-title">属性装饰器 <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        import {{'{'}} Component, Input {{'}'}} from '@angular/core';
+
+        @Component({{'{'}}
+          selector: 'example-component',
+          template: '&lt;div&gt;Woo a component!&lt;/div&gt;'
+        {{'}'}})
+        export class ExampleComponent {{'{'}}
+          @Input()
+          exampleProperty: string;
+        {{'}'}}
+      </pre>
+
+      <hr>
+
+      <h4 class="card-title">方法装饰器 <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        import {{'{'}} Component, HostListener {{'}'}} from '@angular/core';
+
+        @Component({{'{'}}
+          selector: 'example-component',
+          template: '&lt;div&gt;Woo a component!&lt;/div&gt;'
+        {{'}'}})
+        export class ExampleComponent {{'{'}}
+          @HostListener('click', ['$event'])
+          onHostClick(event: Event) {{'{'}}
+            // clicked, `event` available
+          {{'}'}}
+        {{'}'}}
+      </pre>
+
+      <hr>
+
+      <h4 class="card-title">参数装饰器 <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        import {{'{'}} Component, Inject {{'}'}} from '@angular/core';
+        import {{'{'}} MyService {{'}'}} from './my-service';
+
+        @Component({{'{'}}
+          selector: 'example-component',
+          template: '&lt;div&gt;Woo a component!&lt;/div&gt;'
+        {{'}'}})
+        export class ExampleComponent {{'{'}}
+          constructor(@Inject(MyService) myService) {{'{'}} // 与myService: MyService等价
+            console.log(myService);
+          {{'}'}}
+        {{'}'}}
+      </pre>
+
+    </div>
+  </div>
+
+</div>

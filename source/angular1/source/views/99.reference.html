@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS DEMO</title>
+</head>
+
+
+<body>
+<h1>AngularJS DEMO : Reference</h1>
+<hr>
+<h1>AngularJS 参考手册</h1>
+<h2>AngularJS 指令</h2>
+指令 描述<br>
+ng-app 定义应用程序的根元素。<br>
+ng-bind 绑定 HTML 元素到应用程序数据<br>
+ng-bind-html 绑定 HTML 元素的 innerHTML 到应用程序数据，并移除 HTML 字符串中危险字符<br>
+ng-bind-template 规定要使用模板替换的文本内容<br>
+ng-blur 规定 blur 事件的行为<br>
+ng-change 规定在内容改变时要执行的表达式<br>
+ng-checked 规定元素是否被选中<br>
+ng-class 指定 HTML 元素使用的 CSS 类<br>
+ng-class-even 类似 ng-class，但只在偶数行起作用<br>
+ng-class-odd 类似 ng-class，但只在奇数行起作用<br>
+ng-click 定义元素被点击时的行为<br>
+ng-cloak 在应用正要加载时防止其闪烁<br>
+ng-controller 定义应用的控制器对象<br>
+ng-copy 规定拷贝事件的行为<br>
+ng-csp 修改内容的安全策略<br>
+ng-cut 规定剪切事件的行为<br>
+ng-dblclick 规定双击事件的行为<br>
+ng-disabled 规定一个元素是否被禁用<br>
+ng-focus 规定聚焦事件的行为<br>
+ng-form 指定 HTML 表单继承控制器表单<br>
+ng-hide 隐藏或显示 HTML 元素<br>
+ng-href 为 the A 元素指定链接<br>
+ng-if 如果条件为 false 移除 HTML 元素<br>
+ng-include 在应用中包含 HTML 文件<br>
+ng-init 定义应用的初始化值<br>
+ng-jq 定义应用必须使用到的库，如：jQuery<br>
+ng-keydown 规定按下按键事件的行为<br>
+ng-keypress 规定按下按键事件的行为<br>
+ng-keyup 规定松开按键事件的行为<br>
+ng-list 将文本转换为列表 (数组)<br>
+ng-model 绑定 HTML 控制器的值到应用数据<br>
+ng-model-options 规定如何更新模型<br>
+ng-mousedown 规定按下鼠标按键时的行为<br>
+ng-mouseenter 规定鼠标指针穿过元素时的行为<br>
+ng-mouseleave 规定鼠标指针离开元素时的行为<br>
+ng-mousemove 规定鼠标指针在指定的元素中移动时的行为<br>
+ng-mouseover 规定鼠标指针位于元素上方时的行为<br>
+ng-mouseup 规定当在元素上松开鼠标按钮时的行为<br>
+ng-non-bindable 规定元素或子元素不能绑定数据<br>
+ng-open 指定元素的 open 属性<br>
+ng-options 在 select 列表中指定 options<br>
+ng-paste 规定粘贴事件的行为<br>
+ng-pluralize 根据本地化规则显示信息<br>
+ng-readonly 指定元素的 readonly 属性<br>
+ng-repeat 定义集合中每项数据的模板<br>
+ng-selected 指定元素的 selected 属性<br>
+ng-show 显示或隐藏 HTML 元素<br>
+ng-src 指定 <img> 元素的 src 属性<br>
+ng-srcset 指定 <img> 元素的 srcset 属性<br>
+ng-style 指定元素的 style 属性<br>
+ng-submit 规定 onsubmit 事件发生时执行的表达式<br>
+ng-switch 规定显示或隐藏子元素的条件<br>
+ng-transclude 规定填充的目标位置<br>
+ng-value 规定 input 元素的值<br>
+
+<h2>过滤器解析 AngularJs 过滤器。</h2>
+过滤器 描述<br>
+currency 格式化数字为货币格式。<br>
+filter 从数组项中选择一个子集。<br>
+lowercase 格式化字符串为小写。<br>
+orderBy 根据某个表达式排列数组。<br>
+uppercase 格式化字符串为大写。<br>
+
+<h2>AngularJS 事件</h2>
+ng-click<br>
+ng-dbl-click<br>
+ng-mousedown<br>
+ng-mouseenter<br>
+ng-mouseleave<br>
+ng-mousemove<br>
+ng-keydown<br>
+ng-keyup<br>
+ng-keypress<br>
+ng-change<br>
+
+<h2>AngularJS 验证属性</h2>
+* @property {Object} $error An object hash with all failing validator ids as keys.<br>
+* @property {Object} $pending An object hash with all pending validator ids as keys.<br>
+* @property {boolean} $untouched True if control has not lost focus yet.<br>
+* @property {boolean} $touched True if control has lost focus.<br>
+* @property {boolean} $pristine True if user has not interacted with the control yet.<br>
+* @property {boolean} $dirty True if user has already interacted with the control.<br>
+* @property {boolean} $valid True if there is no error.<br>
+* @property {boolean} $invalid True if at least one error on the control.<br>
+* @property {string} $name The name attribute of the control.<br>
+
+<h2>AngularJS 全局 API</h2>
+API 描述<br>
+angular.lowercase() 将字符串转换为小写<br>
+angular.uppercase() 将字符串转换为大写<br>
+angular.copy() 数组或对象深度拷贝<br>
+angular.forEach() 对象或数组的迭代函数<br>
+angular.isArray() 如果引用的是数组返回 true<br>
+angular.isDate() 如果引用的是日期返回 true<br>
+angular.isDefined() 如果引用的已定义返回 true<br>
+angular.isElement() 如果引用的是 DOM 元素返回 true<br>
+angular.isFunction() 如果引用的是函数返回 true<br>
+angular.isNumber() 如果引用的是数字返回 true<br>
+angular.isObject() 如果引用的是对象返回 true<br>
+angular.isString() 如果引用的是字符串返回 true<br>
+angular.isUndefined() 如果引用的未定义返回 true<br>
+angular.equals() 如果两个对象相等返回 true<br>
+angular.fromJSON() 反序列化 JSON 字符串<br>
+angular.toJSON() 序列化 JSON 字符串<br>
+angular.bootstrap() 手动启动 AngularJS<br>
+angular.element() 包裹着一部分DOM element或者是HTML字符串，把它作为一个jQuery元素来处理。<br>
+angular.module() 创建，注册或检索 AngularJS 模块<br>
+</body>
+<script src="../../components/angular/angular.min.js"></script>
+</html>

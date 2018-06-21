@@ -1,0 +1,19 @@
+/* Base controller layout */
+
+/* Container layout */
+.app-container{
+  //border: 1px solid #5a5a5a;
+  padding-top: 80px;
+}
+
+.body-container{
+  min-height: 650px;
+  margin-bottom: 100px;
+}
+
+.card{
+  margin: 30px 0;
+  .card-body{
+    padding: 20px 20px;
+  }
+}

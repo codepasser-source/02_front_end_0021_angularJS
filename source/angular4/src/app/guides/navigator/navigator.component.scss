@@ -1,0 +1,15 @@
+.guides-navigator-container{
+  position: fixed;
+  a{
+    border-left: 2px solid #fff;
+    padding-left: 5px;
+    text-decoration: none;
+  }
+  a.active{
+    border-left: 2px solid;
+  }
+  a.bd-toc-link{
+    border-left: 2px solid #fff;
+  }
+
+}

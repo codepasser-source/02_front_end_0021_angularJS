@@ -1,0 +1,57 @@
+<div class="guides-injection-container">
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> Dependency Injection</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Service Injection <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+
+        # 1 创建服务命令
+        ng g s services/logger --spec false
+
+        # 服务中的代码
+        import {{'{'}} Injectable {{'}'}} from '@angular/core'; // 引入Injectable
+
+        @Injectable() // 声明可注入
+        export class LoggerService {{'{'}}
+
+          constructor() {{'{'}} {{'}'}}
+
+          info(msg:String){{'{'}} // service的方法
+            console.info(msg);
+          {{'}'}}
+
+        {{'}'}}
+
+        # 2 在module或component中通过providers导入service,通常在module中声明导入方便多个子component中调用
+        import {{'{'}} LoggerService {{'}'}} from '../services/logger.service';
+
+        ...
+
+        providers: [
+          LoggerService
+        ],
+
+        # 3 注入服务
+
+        方法1:
+        import {{'{'}} Inject {{'}'}} from '@angular/core';
+
+        ...
+
+        constructor( @Inject(LoggerService) private logger) {{'{'}}
+          ...
+        {{'}'}}
+
+        方法2:
+        constructor(private logger: LoggerService) {{'{'}}
+          ...
+        {{'}'}}
+
+      </pre>
+    </div>
+  </div>
+
+</div>

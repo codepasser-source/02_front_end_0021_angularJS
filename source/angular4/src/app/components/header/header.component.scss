@@ -1,0 +1,15 @@
+@import "../../../assets/scss/base/common-variables.scss";
+
+.header-container{
+  .nav{
+      background-color: $background-dark !important;
+      .nav-item{
+        .nav-link{
+          color: $link-color-light;
+        }
+        .nav-link.active{
+          color: $link-color-light-active;
+        }
+      }
+  }
+}

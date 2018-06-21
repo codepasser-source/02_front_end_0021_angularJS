@@ -1,0 +1,17 @@
+@import "../../../assets/style/scss/_variables.scss";
+.footer-container{
+
+  .footer-nav-container{
+
+    .nav-item{
+      margin:0;
+      padding: 0;
+      text-align: center;
+      color: $white;
+    }
+
+    .nav-item.active{
+      color: $orange;
+    }
+  }
+}

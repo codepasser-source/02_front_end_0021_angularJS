@@ -1,0 +1,126 @@
+<div class="guides-pipe-container">
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> Pipe</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Pipe <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        # Angular 4 中 Pipe(管道) 与 Angular 1.x 中的 filter(过滤器) 的作用的是一样的。
+        # 它们都是用来对输入的数据进行处理，如大小写转换、数值和日期格式化等。
+
+        # Angular 内置管道及分类
+        String -> String
+          UpperCasePipe
+          LowerCasePipe
+          TitleCasePipe
+        Number -> String
+          DecimalPipe
+          PercentPipe
+          CurrencyPipe
+        Object -> String
+          JsonPipe
+          DatePipe
+        Tools
+          SlicePipe
+          AsyncPipe
+          I18nPluralPipe
+          I18nSelectPipe
+      </pre>
+      <h4 class="card-title">Pipe <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+
+        # 转大写
+        <p ngNonBindable>{{ 'Angular' | uppercase }}</p>
+        <p>{{ 'Angular' | uppercase }}</p>
+
+        <hr>
+
+        # 转小写
+        <p ngNonBindable>{{ 'Angular' | lowercase }}</p>
+        <p>{{ 'Angular' | lowercase }}</p>
+
+        <hr>
+
+        # 数值格式化
+        <p ngNonBindable>{{ 3.14159265 | number: '1.4-4' }}</p>
+        <p>{{ 3.14159265 | number: '1.4-4' }}</p>
+
+        <hr>
+
+        # 日期格式化
+        <p ngNonBindable>{{ today | date: 'shortTime' }}</p>
+        <p>{{ today | date: 'shortTime' }}</p>
+        <p ngNonBindable>{{ today | date: 'yyyy/MM/dd hh:mm:ss' }}</p>
+        <p>{{ today | date: 'yyyy/MM/dd HH:mm:ss' }}</p>
+
+        <hr>
+
+        # JavaScript对象序列化
+        <p ngNonBindable>{{ { name: 'semlinker' } | json }}</p>
+        <p>{{ { name: 'semlinker' } | json }}</p>
+      </pre>
+
+      <hr>
+
+      <h4 class="card-title">Pipe参数 <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+
+        <p ngNonBindable>{{ 'semlinker' | slice:0:3 }}</p>
+        <p>{{ 'semlinker' | slice:0:3 }}</p>
+
+      </pre>
+
+      <hr>
+
+      <h4 class="card-title">Pipe链 <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+
+        <p ngNonBindable>{{ 'semlinker' | slice:0:3 | uppercase }}</p>
+        <p>{{ 'semlinker' | slice:0:3 | uppercase }}</p>
+
+      </pre>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> 自定义Pipe</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">自定义Pipe <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        # 自定义管道的步骤：
+
+        - 使用 @Pipe 装饰器定义 Pipe 的 metadata 信息，如 Pipe 的名称 - 即 name 属性
+        - 实现 PipeTransform 接口中定义的 transform 方法
+
+        - 创建共同指令模块
+        ng g m pipes
+        - 创建指令
+        ng g p pipes/ellipsis --spec false --export true
+      </pre>
+
+      <hr>
+
+      <h4 class="card-title">自定义Pipe <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+
+        <p ngNonBindable>{{ 'semlinker' | ellipsis:{digit:5,symbol:'...'} }}</p>
+
+        <p>{{ 'semlinker' | ellipsis:{digit:5,symbol:'...'} }}</p>
+
+      </pre>
+
+      <hr>
+
+      <h4 class="card-title">AsyncPipe <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        TODO
+      </pre>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,78 @@
+<div class="guides-tsc-container">
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> TypeScript</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">官方文档 <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        <var>https://www.tslang.cn/docs/home.html</var>
+      </pre>
+
+      <hr>
+
+      <h4 class="card-title">TypeScript开发环境 <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        - 安装nodejs
+
+            https://nodejs.org/en/
+
+        - 安装TypeScript\Gulp TypeScript插件
+
+            # 卸载
+            # 目录: /usr/local/lib/node_modules
+            # 命令目录: /usr/local/bin
+            sudo npm uninstall -g typescript
+            # sudo npm uninstall -g gulp-cli
+            sudo npm uninstall -g gulp
+            sudo npm uninstall -g gulp-typescript
+            sudo npm cache clean
+            sudo npm list
+
+            # 安装
+            sudo npm install -g typescript
+            sudo npm install -g gulp
+            sudo npm uninstall -g gulp-cli
+            sudo npm install -g gulp-typescript
+
+            # 选择淘宝npm库: --registry=http://registry.npm.taobao.org/ --disturl=https://npm.taobao.org/dist
+            sudo npm install -g typescript --registry=http://registry.npm.taobao.org/ --disturl=https://npm.taobao.org/dist
+            sudo npm install -g gulp --registry=http://registry.npm.taobao.org/ --disturl=https://npm.taobao.org/dist
+            # sudo npm uninstall -g gulp-cli --registry=http://registry.npm.taobao.org/ --disturl=https://npm.taobao.org/dist
+            sudo npm install -g gulp-typescript --registry=http://registry.npm.taobao.org/ --disturl=https://npm.taobao.org/dist
+
+        - 创建应用
+
+            mkdir typescript
+            cd typescript
+            # 初始化git
+            touch README.md
+            git init
+            git add .
+
+            # 应用中安装开发依赖
+            sudo npm install typescript --save-dev
+            sudo npm install gulp --save-dev
+            sudo npm install gulp-typescript --save-dev
+
+            # npm初始化包,生成package.json文件
+            npm init
+            # 创建 typescrpt 编译参数配置文件
+            tsc --init
+
+            {{'{'}}
+              "include": [
+                "src/script/**/*.ts"
+              ],
+              "exclude": [
+                "node_modules",
+                "**/*.spec.ts"
+              ]
+            {{'}'}}
+      </pre>
+
+    </div>
+  </div>
+
+</div>

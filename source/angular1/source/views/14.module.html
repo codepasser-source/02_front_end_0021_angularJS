@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS DEMO</title>
+</head>
+
+
+<body ng-app="myApp">
+<h1>AngularJS DEMO : Module</h1>
+<hr>
+<h2>创建模块</h2>
+你可以通过 AngularJS 的 angular.module 函数来创建模块
+
+<h2>添加控制器</h2>
+你可以使用 ng-controller 指令来添加应用的控制器
+<hr>
+
+<div ng-controller="myCtrl">
+    <ul ng-model="counts">
+        <li ng-repeat="x in counts">{{x | myFormat}}</li>
+    </ul>
+</div>
+</body>
+<script src="../../components/angular/angular.min.js"></script>
+
+<script>
+    var app = angular.module("myApp", []);
+
+    app.directive("runoobDirective", function () {
+        return {
+            template: "我在指令构造器中创建!"
+        };
+    });
+    app.service('hexafy', function () {
+        this.myFunc = function (x) {
+            return x.toString(16);
+        }
+    });
+    app.filter('myFormat', ['hexafy', function (hexafy) {
+        return function (x) {
+            return hexafy.myFunc(x);
+        };
+    }]);
+    app.controller('myCtrl', function ($scope, hexafy) {
+        $scope.hex = hexafy.myFunc(255);
+        $scope.counts = [255, 251, 200];
+    });
+</script>
+
+</html>

@@ -1,0 +1,69 @@
+<div class="guides-http-container">
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> Http</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Http <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        # 1 引入HttpModule
+        import {{'{'}} HttpModule {{'}'}} from '@angular/http';
+
+        # 2 在使用Http组件的组件\服务中import Http
+        import {{'{'}} Http, Headers, RequestOptions {{'}'}} from '@angular/http';
+        import 'rxjs/add/operator/toPromise'; 或 import 'rxjs/add/operator/map'
+
+        # 3 使用http中Api方法
+        class Http {{'{'}}
+          ...
+          get(url: string, options?: RequestOptionsArgs): Observable&lt;Response&gt;
+          post(url: string, body: any, options?: RequestOptionsArgs): Observable&lt;Response&gt;
+          put(url: string, body: any, options?: RequestOptionsArgs): Observable&lt;Response&gt;
+          delete(url: string, options?: RequestOptionsArgs): Observable&lt;Response&gt;
+          patch(url: string, body: any, options?: RequestOptionsArgs): Observable&lt;Response&gt;
+          head(url: string, options?: RequestOptionsArgs): Observable&lt;Response&gt;
+          options(url: string, options?: RequestOptionsArgs): Observable&lt;Response&gt;
+        {{'}'}}
+      </pre>
+
+      <hr>
+
+      <h4 class="card-title">Http GET<span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+
+        <button (click)="fnGet()">Get Method</button>
+
+      </pre>
+
+      <hr>
+
+      <h4 class="card-title">Http POST<span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+
+        <button (click)="fnPost()">Post Method</button>
+
+      </pre>
+
+      <hr>
+
+      <h4 class="card-title">Http PUT<span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+
+        <button (click)="fnPut()">Put Method</button>
+
+      </pre>
+
+      <hr>
+
+      <h4 class="card-title">Http DELETE<span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+
+        <button (click)="fnDelete()">Delete Method</button>
+
+      </pre>
+
+    </div>
+  </div>
+
+</div>

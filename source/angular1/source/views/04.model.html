@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS DEMO</title>
+    <style>
+        input.ng-invalid {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body ng-app="myApp">
+
+<h1>AngularJS DEMO : ng-Model</h1>
+<hr>
+<h2>ng-model 指令</h2>
+<ul>
+    <li>
+        <P>ng-model 指令 绑定 HTML 元素 到应用程序数据。ng-model 指令用于绑定应用程序数据到 HTML 控制器(input, select, textarea)的值。</P>
+        <P>ng-model 指令也可以：
+        <ul>
+            <li>为应用程序数据提供类型验证（number、email、required）。</li>
+            <li>为应用程序数据提供状态（invalid、dirty、touched、error）。</li>
+            <li>为 HTML 元素提供 CSS 类。</li>
+            <li>绑定 HTML 元素到 HTML 表单。</li>
+        </ul>
+        </P>
+    </li>
+</ul>
+<p> ng-model 指令根据表单域的状态添加/移除以下类：</p>
+<ul>
+    <li>ng-empty</li>
+    <li>ng-not-empty</li>
+    <li>ng-touched</li>
+    <li>ng-untouched</li>
+    <li>ng-valid</li>
+    <li>ng-invalid</li>
+    <li>ng-dirty</li>
+    <li>ng-pending</li>
+    <li>ng-pristine</li>
+</ul>
+<hr>
+
+<h2>双向绑定</h2>
+<div ng-controller="myCtrl">
+    名字: <input ng-model="name">
+    <h1>你输入了: {{name}}</h1>
+</div>
+
+<h2>验证用户输入\应用状态\CSS</h2>
+<form name="userForm" ng-init="email='chengyy@hooying.com'">
+    Email:
+    <input type="email" name="myAddress" ng-model="email" required>
+    <span ng-show="userForm.myAddress.$error.email">不是一个合法的邮箱地址</span>
+    <h3>状态</h3>
+    <p>Valid: {{userForm.myAddress.$valid}} (如果输入的值是合法的则为 true)。</p>
+    <p>Dirty: {{userForm.myAddress.$dirty}} (如果值改变则为 true)。</p>
+    <p>Touched: {{userForm.myAddress.$touched}} (如果通过触屏点击则为 true)。</p>
+</form>
+
+
+</body>
+<script src="../../components/angular/angular.min.js"></script>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope) {
+        $scope.name = "John Doe";
+    });
+</script>
+</html>

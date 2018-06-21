@@ -1,0 +1,209 @@
+<div class="guides-directive-container">
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> Directive</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">指令概念 <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        # Angular 的指令分为三种：
+        - 组件(Component directive)：用于构建UI组件，继承于 Directive 类.
+        - 属性指令(Attribute directive)：用于改变组件的外观或行为.
+        - 结构指令(Structural directive)：用于动态添加或删除 DOM 元素来改变 DOM 布局.
+        <img src="../../../assets/images/guides/directive/0.png" />
+      </pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> 组件指令</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">组件指令 <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        <img src="../../../assets/images/guides/directive/1.png" />
+      </pre>
+      <h4 class="card-title">组件指令 <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        import {{'{'}} Component {{'}'}} from '@angular/core';
+
+        @Component({{'{'}}
+          selector: 'my-app', // 定义组件在HTML代码中匹配的标签
+          template: `&lt;h1&gt;Hello {{'{'}}{{'{'}}name{{'}'}}{{'}'}}&lt;/h1&gt;`, // 指定组件关联的内联模板
+        {{'}'}})
+        export class AppComponent {{'{'}}
+          name = 'Angular';
+        {{'}'}}
+
+        // Template中使用
+        &lt;my-app&gt;&lt;my-app&gt;
+      </pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> 内置属性指令</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">ngStyle <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        ngStyle指令： 用于设定给定 DOM 元素的 style 属性
+        # 绑定常亮
+        <code>&lt;div [ngStyle]="{{'{'}}'background-color': 'green'{{'}'}}"&gt;...&lt;/div&gt;</code>
+        # 绑定表达式
+        <code>&lt;div [ngStyle]="{{'{'}}'background-color': condition === true ? 'red' : 'green'{{'}'}}"&gt;...&lt;/div&gt;</code>
+      </pre>
+      <h4 class="card-title">ngStyle <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        <ul>
+            <li [ngStyle]="{'background-color': 'green'}">green</li>
+            <li [ngStyle]="{'background-color': condition === true ? 'red' : 'green'}">red</li>
+        </ul>
+      </pre>
+
+      <hr/>
+
+      <h4 class="card-title">ngClass <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        ngClass指令：用于动态的设定 DOM 元素的 CSS class
+        # 绑定常亮
+        <code>&lt;div [ngClass]="{{'{'}}'alert-info': true{{'}'}}"&gt;...&lt;/div&gt;</code>
+        # 绑定表达式
+        <code>&lt;div [ngClass]="{{'{'}}'alert-success': condition === true{{'}'}}"&gt;...&lt;/div&gt;</code>
+      </pre>
+      <h4 class="card-title">ngClass <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+          <div class="alert" [ngClass]="{'alert-info': true }">
+            This is a info alert—check it out!
+          </div>
+          <div class="alert" [ngClass]="{'alert-success': condition === true}">
+            This is a success alert—check it out!
+          </div>
+      </pre>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> 内置结构指令</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">ngIf <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        # 该指令用于根据表达式的值，动态控制模板内容的显示与隐藏。
+        # 它与 AngularJS 1.x 中的 ng-if 指令的功能是等价的。
+        <code>&lt;div *ngIf="condition"&gt;...&lt;/div&gt;</code>
+      </pre>
+      <h4 class="card-title">ngIf <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        <div *ngIf="condition">condition==true时显示</div>
+        <div *ngIf="!condition">condition==false时显示</div>
+        <!--deprecated-->
+        <!-- <div template="ngIf condition">template 写法</div> -->
+      </pre>
+
+      <hr/>
+
+      <h4 class="card-title">ngFor <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        ngFor指令：使用可迭代的每个项作为模板的上下文来重复模板，类似于 Ng 1.x 中的 ng-repeat 指令
+        <code>&lt;div *ngFor="let person of people;index as i"&gt;{{'{'}}{{'{'}}person.name{{'}'}}{{'}'}}{{'{'}}{{'{'}}i{{'}'}}{{'}'}}&lt;/div&gt;</code>
+      </pre>
+      <h4 class="card-title">ngFor <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        <ul>
+            <li *ngFor="let skill of skills;index as i;">content : {{skill}} - index : {{i}}</li>
+        </ul>
+      </pre>
+
+      <hr/>
+
+      <h4 class="card-title">ngSwitch <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        ngSwitch指令：它包括两个指令，一个属性指令和一个结构指令。它类似于 JavaScript 中的 switch 语句
+
+        &lt;div [ngSwitch]='skills[0]'&gt;
+          &lt;div *ngSwitchCase="'a'" class="alert alert-success"&gt;
+            {{'{'}}{{'{'}}skills{{'}'}}{{'}'}}
+          &lt;/div&gt;
+          &lt;div *ngSwitchCase="'b'" class="alert alert-info"&gt;
+            {{'{'}}{{'{'}}skills{{'}'}}{{'}'}}
+          &lt;/div&gt;
+          &lt;div *ngSwitchDefault class='alert alert-info'&gt;
+            {{'{'}}{{'{'}}skills{{'}'}}{{'}'}}
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      </pre>
+      <h4 class="card-title">ngSwitch <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        <div [ngSwitch]='skills[0]'>
+          <div *ngSwitchCase="'a'" class="alert alert-success">
+            {{skills}}
+          </div>
+          <div *ngSwitchCase="'b'" class="alert alert-info">
+            {{skills}}
+          </div>
+          <div *ngSwitchDefault class='alert alert-info'>
+            {{skills}}
+          </div>
+        </div>
+      </pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> 自定义属性指令</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">自定义属性指令 <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        - 创建共同指令模块
+        <code>ng g m directives</code>
+        - 创建指令
+        <code>ng g d directives/highLight --spec false--export true</code>
+        - 指令中依赖 ElementRef HostListener Input模块,用于获取节点\绑定事件\获取绑定输入
+        import {{'{'}} Directive, ElementRef, HostListener, Input {{'}'}} from '@angular/core';
+      </pre>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">自定义属性指令 <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        <div class="alert alert-success" appHighLight [defaultClass]="defaultClass">high light</div>
+      </pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> 自定义结构指令</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">自定义结构指令 <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        - 创建指令
+        <code>ng g d directives/unless --spec false --export true</code>
+        - 指令中依赖 ElementRef HostListener Input模块,用于获取节点\绑定事件\获取绑定输入
+        import {{'{'}} Directive, Input, TemplateRef, ViewContainerRef {{'}'}} from '@angular/core';
+      </pre>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">自定义结构指令 <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        <p *appUnless="condition" class="unless a">
+          (A) This paragraph is displayed because the condition is true.
+        </p>
+        <p *appUnless="!condition" class="unless b">
+          (B) Although the condition is true,
+          this paragraph is displayed because the condition is false.
+        </p>
+      </pre>
+    </div>
+  </div>
+
+</div>

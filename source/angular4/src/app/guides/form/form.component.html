@@ -1,0 +1,167 @@
+<div class="guides-form-container">
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Section</span> Forms</h3>
+    </div>
+    <div class="card-body">
+
+      <h4 class="card-title">Form Event <span class="badge badge-pill badge-info">Sample</span></h4>
+      <pre class="card-text">
+        # Click event
+        <button (click)="onClickHandler($event)">Click me!</button>
+        # Input event
+        <input (keyup)="onKeyUpHandler($event)" (keyup.enter)="onKeyUpEnterHandler($event)" (focus)="onFocusHandler($event)" (blur)="onBlurHandler($event)">
+        # Key event with variable
+        <input #userName (keyup)="onKeyDownHandler($event,name,userName)">
+      </pre>
+
+      <hr>
+
+      <h4 class="card-title">Template-dirven Forms <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        # module中引入FormsModule
+        import {{'{'}} FormsModule {{'}'}}   from '@angular/forms';
+        imports: [
+           ...
+           FormsModule
+           ...
+         ],
+        # 表单绑定属性
+        (ngSubmit)="onSignFormSubmit()" #signForm="ngForm"
+        # 表单元素绑定属性
+        required [(ngModel)]="signInfo.email" #email="ngModel"
+        # 表单校验状态
+        [disabled]="!signForm.form.valid"
+        # 表单元素校验状态
+        [hidden]="email.valid || email.pristine"
+
+        # 表单校验样式
+        # State	Class if true	Class if false
+        ng-touched: 	已经访问
+        ng-untouched: 未访问
+        ng-dirty:     变化
+        ng-pristine:  原始
+        ng-valid:     有效
+        ng-invalid:   无效
+
+      </pre>
+
+      <h4 class="card-title">Template-dirven Forms <span class="badge badge-pill badge-info">Sample</span></h4>
+      <div class="card-text">
+        <form (ngSubmit)="onSignFormSubmit()" #signForm="ngForm">
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input id="email" type="email" class="form-control" name="email" required [(ngModel)]="signInfo.email" #email="ngModel" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <div id="emailTip" [hidden]="email.valid || email.pristine" class="invalid-feedback">
+              {{email.errors | json}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" class="form-control" name="password" required minlength="6" [(ngModel)]="signInfo.password"  #password="ngModel"
+            placeholder="Password">
+            <div id="passwordTip" [hidden]="password.valid || password.pristine" class="invalid-feedback">
+              {{password.errors | json}}
+            </div>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input">
+              Check me out
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!signForm.form.valid">Submit</button>
+        </form>
+      </div>
+
+      <hr>
+
+      <h4 class="card-title">Reactive Forms <span class="badge badge-pill badge-info">Guide</span></h4>
+      <pre class="card-text">
+        # Import reactive forms module
+        import {{'{'}} FormsModule, ReactiveFormsModule {{'}'}} from '@angular/forms';
+        # Component import forms's utils
+        import  {{'{'}} FormBuilder, FormControl, FormGroup, Validators {{'}'}} from '@angular/forms';
+
+        # Validators
+        static min(min: number): ValidatorFn
+        static max(max: number): ValidatorFn
+        static required(control: AbstractControl): ValidationErrors|null
+        static requiredTrue(control: AbstractControl): ValidationErrors|null
+        static email(control: AbstractControl): ValidationErrors|null
+        static minLength(minLength: number): ValidatorFn
+        static maxLength(maxLength: number): ValidatorFn
+        static pattern(pattern: string|RegExp): ValidatorFn
+        static nullValidator(c: AbstractControl): ValidationErrors|null
+        static compose(validators: (ValidatorFn|null|undefined)[]|null): ValidatorFn|null
+        static composeAsync(validators: (AsyncValidatorFn|null)[]): AsyncValidatorFn|null
+      </pre>
+
+      <h4 class="card-title">Reactive Forms <span class="badge badge-pill badge-info">Sample</span></h4>
+      <div class="card-text">
+          <div class="alert alert-info">Form value: {{ userForm.value | json }}</div>
+          <div class="alert alert-info">Form status: {{ userForm.status | json }}</div>
+
+          <div class="alert alert-info">Form name value: {{ userForm.get('name').value}}</div>
+          <div class="alert alert-info">Form name error: {{ userForm.get('name').errors | json}}</div>
+          <div class="alert alert-info">Form name status: {{ userForm.get('name').status | json}}</div>
+          <div class="alert alert-info">Form email value: {{ userForm.get('email').value}}</div>
+          <div class="alert alert-info">Form email error: {{ userForm.get('email').errors | json}}</div>
+          <div class="alert alert-info">Form email status: {{ userForm.get('email').status | json}}</div>
+          <form [formGroup]="userForm" novalidate (submit)="onUserFormSubmit()">
+            <div class="form-group">
+              <label class="center-block">Name:
+                <input class="form-control" formControlName="name">
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="center-block">Email:
+                <input class="form-control" formControlName="email">
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="center-block">Street:
+                <input class="form-control" formControlName="street">
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="center-block">City:
+                <input class="form-control" formControlName="city">
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="center-block">State:
+                <select class="form-control" formControlName="state" [(ngModel)]="currentState">
+                    <option *ngFor="let state of states;index as i" [value]="state.value">{{state.text}} - {{i==1}}</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="center-block">Zip Code:
+                <input class="form-control" formControlName="zip">
+              </label>
+            </div>
+            <div class="form-group radio">
+              <h4>Super power:</h4>
+              <label class="center-block"><input type="radio" formControlName="power" value="flight">Flight</label>
+              <label class="center-block"><input type="radio" formControlName="power" value="x-ray vision">X-ray vision</label>
+              <label class="center-block"><input type="radio" formControlName="power" value="strength">Strength</label>
+            </div>
+            <div class="checkbox">
+              <label class="center-block">
+                <input type="checkbox" formControlName="sidekick">I have a sidekick.
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Submit</button>
+
+          </form>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

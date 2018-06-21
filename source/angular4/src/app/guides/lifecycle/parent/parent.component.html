@@ -1,0 +1,14 @@
+<div class="guides-lifecycle-parent-container">
+
+  <div class="card">
+    <div class="card-header">
+      <h3><span class="badge badge-info">Parent</span></h3>
+    </div>
+    <div class="card-body">
+        <div class="alert alert-info">{{title}}</div>
+        <div class="alert alert-success">counter当前值:{{counter}}</div>
+        <app-guides-lifecycle-child caption="child caption" [counter]="counter" (changeCounter)="counterChangeHandler($event)"></app-guides-lifecycle-child>
+    </div>
+  </div>
+
+</div>

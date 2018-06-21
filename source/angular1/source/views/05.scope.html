@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS DEMO</title>
+</head>
+<body ng-app="myApp">
+
+<h1>AngularJS DEMO : $scope</h1>
+<hr>
+
+<h2>Scope 概述</h2>
+<p>AngularJS 应用组成如下：</p>
+<ul>
+    <li>View(视图), 即 HTML。</li>
+    <li>Model(模型), 当前视图中可用的数据。</li>
+    <li>Controller(控制器), 即 JavaScript 函数，可以添加或修改属性。</li>
+    <li>scope 是模型。scope 是一个 JavaScript 对象，带有属性和方法，这些属性和方法可以在视图和控制器中使用。</li>
+</ul>
+
+<h2>$rootScope</h2>
+它可以作用在 ng-app 指令包含的所有 HTML 元素中。
+<h2>$scope</h2>
+了解你当前使用的 scope 是非常重要的。
+在以上两个实例中，只有一个作用域 scope，所以处理起来比较简单，但在大型项目中， HTML DOM 中有多个作用域，这时你就需要知道你使用的 scope 对应的作用域是哪一个。
+<hr>
+
+<h3>{{lastname}} 家族成员:</h3>
+
+<div ng-controller="myCtrl">
+    <h3>{{lastname}} 家族成员:</h3>
+    <ul>
+        <li ng-repeat="x in names">{{x}} {{lastname}}</li>
+    </ul>
+</div>
+
+</body>
+<script src="../../components/angular/angular.min.js"></script>
+
+
+<script>
+    var app = angular.module('myApp', []);
+
+    app.controller('myCtrl', function ($scope, $rootScope) {
+        $scope.names = ["Emil", "Tobias", "Linus"];
+        $rootScope.lastname = "Refsnes";
+    });
+</script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS DEMO</title>
+</head>
+<body ng-app="myApp">
+
+<h1>AngularJS DEMO : Filter</h1>
+<hr>
+
+<h2>AngularJS 过滤器</h2>
+过滤器可以使用一个管道字符（|）添加到表达式和指令中。
+AngularJS 过滤器可用于转换数据：
+<ul>
+    <li>currency 格式化数字为货币格式。</li>
+    <li>filter 从数组项中选择一个子集。</li>
+    <li>lowercase 格式化字符串为小写。</li>
+    <li>orderBy 根据某个表达式排列数组。</li>
+    <li>uppercase 格式化字符串为大写。</li>
+</ul>
+
+<h2>表达式中添加过滤器</h2>
+过滤器可以通过一个管道字符（|）和一个过滤器添加到表达式中。.
+<hr>
+
+<div ng-controller="myCtrl">
+    <p>姓名为 {{ firstName | lowercase }}</p>
+    <p>姓名为 {{ lastName | uppercase }}</p>
+    <input type="number" ng-model="quantity">
+    <input type="number" ng-model="price">
+    <p>总价 = {{ (quantity * price) | currency }}</p>
+    <ul>
+        <li ng-repeat="x in names | orderBy:'country'">
+            {{ x.name + ', ' + x.country }}
+        </li>
+    </ul>
+
+    <p><input type="text" ng-model="test"></p>
+    <ul>
+        <li ng-repeat="x in names | filter:test | orderBy:'country'">
+            {{ (x.name | uppercase) + ', ' + x.country }}
+        </li>
+    </ul>
+</div>
+
+</body>
+<script src="../../components/angular/angular.min.js"></script>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope, $rootScope, $location) {
+        $scope.firstName = "John";
+        $scope.lastName = "Doe";
+
+        $scope.fullName = function () {
+            return $scope.firstName + " " + $scope.lastName;
+        }
+
+        $scope.quantity = 10;
+        $scope.price = 20.15;
+
+        $scope.names = [{name: 'name1', country: "3"}, {name: 'name2', country: "2"}, {name: 'name3', country: "1"},]
+        console.log($scope);
+        console.log($rootScope);
+        console.log($location);
+    });
+</script>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS DEMO</title>
+    <link rel="stylesheet" href="../../components/bootstrap/css/bootstrap.css">
+</head>
+
+<body ng-app='ngRouteExample'>
+<h1>AngularJS DEMO : Route</h1>
+<hr>
+<h2>路由设置对象</h2>
+AngularJS 路由也可以通过不同的模板来实现。
+$routeProvider.when 函数的第一个参数是 URL 或者 URL 正则规则，第二个参数为路由配置对象。
+路由配置对象语法规则如下：
+<pre style="" class="prettyprint prettyprinted"><span class="pln">$routeProvider</span><span class="pun">.</span><span
+        class="kwd">when</span><span class="pun">(</span><span class="pln">url</span><span class="pun">,</span><span
+        class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">template</span><span class="pun">:</span><span class="pln"> </span><span
+        class="kwd">string</span><span class="pun">,</span><span class="pln">
+    templateUrl</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">string</span><span
+        class="pun">,</span><span class="pln">
+    controller</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">string</span><span
+        class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span
+        class="pun">或</span><span class="pln"> array</span><span class="pun">,</span><span class="pln">
+    controllerAs</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">string</span><span
+        class="pun">,</span><span class="pln">
+    redirectTo</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">string</span><span
+        class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">,</span><span
+        class="pln">
+    resolve</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">object</span><span class="pun">&lt;</span><span
+        class="pln">key</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span
+        class="pun">&gt;</span><span class="pln">
+</span><span class="pun">});</span></pre>
+<hr>
+
+<h2>AngularJS 路由应用</h2>
+<script type="text/ng-template" id="embedded.home.html">
+    <h1> Home {{routeVar}} </h1>
+</script>
+
+<script type="text/ng-template" id="embedded.about.html">
+    <h1> About {{routeVar}}</h1>
+</script>
+
+<div>
+    <div id="navigation">
+        <a href="#/home">Home</a>
+        <a href="#/about">About</a>
+    </div>
+
+    <div ng-view=""></div>
+</div>
+
+</body>
+<script src="../../components/angular/angular.min.js"></script>
+<script src="../../components/angular/angular-route.js"></script>
+<script>
+    angular.module('ngRouteExample', ['ngRoute'])
+            .controller('HomeController', function ($scope, $route) {
+                console.log($route);
+                $scope.$route = $route;
+                $scope.routeVar = 1;
+            })
+            .controller('AboutController', function ($scope, $route) {
+                console.log($route);
+                $scope.$route = $route;
+                $scope.routeVar = 2;
+            })
+            .config(function ($routeProvider) {
+                $routeProvider.
+                when('/home', {
+                    templateUrl: 'embedded.home.html',
+                    controller: 'HomeController'
+                }).
+                when('/about', {
+                    templateUrl: 'embedded.about.html',
+                    controller: 'AboutController'
+                }).
+                otherwise({
+                    redirectTo: '/home'
+                });
+            });
+</script>
+<html>
